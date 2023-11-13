@@ -20,6 +20,9 @@ dependencies:
   '@nestjs/platform-fastify':
     specifier: ^10.2.8
     version: 10.2.8(@nestjs/common@10.0.0)(@nestjs/core@10.0.0)
+  fastify:
+    specifier: ^4.24.3
+    version: 4.24.3
   reflect-metadata:
     specifier: ^0.1.13
     version: r2.cnpmjs.org/reflect-metadata@0.1.13
