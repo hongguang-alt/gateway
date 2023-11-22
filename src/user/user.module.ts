@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CacheModule } from '@nestjs/cache-manager';
+// import { CacheModule } from '@nestjs/cache-manager';
 import { FeishuService } from './feishu/feishu.service';
 import { FeishuController } from './feishu/feishu.controller';
 
 @Module({
-  imports: [CacheModule.register()],
+  imports: [],
   controllers: [FeishuController],
   providers: [FeishuService],
 })
