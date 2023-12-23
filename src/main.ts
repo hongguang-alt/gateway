@@ -14,6 +14,10 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import { FastifyLogger } from './common/logger';
+import fastify from 'fastify';
+import fastifyCookie from '@fastify/cookie';
+
 declare const module: any;
 
 async function bootstrap() {
@@ -22,10 +26,17 @@ async function bootstrap() {
     module.hot.dispose(() => app.close());
   }
 
+  const fastifyInstance = fastify({
+    logger: FastifyLogger,
+  });
+
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(),
+    new FastifyAdapter(fastifyInstance),
   );
+  app.register(fastifyCookie, {
+    secret: 'my-secret', // for cookies signature
+  });
 
   // 接口版本化管理
   app.enableVersioning({
