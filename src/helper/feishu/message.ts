@@ -32,8 +32,6 @@ export const messages = async (
   params: MESSAGES_PARAMS,
   app_token: string,
 ) => {
-  console.log(receive_id_type, params, app_token);
-
   const { data } = await methodV({
     url: `/im/v1/messages`,
     method: 'POST',
